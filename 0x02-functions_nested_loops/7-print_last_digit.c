@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <limits.h>
 #include "main.h"
 
 /**
