@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include <main.h>
 /**
  * print_alphabet - prints the english alphabet from a-z.
- * Return: 0
+ * Return: nothing
  */
 void print_alphabet(void)
 {
@@ -12,5 +12,4 @@ void print_alphabet(void)
 		_putchar(c);
 	}
 	_putchar('\n');
-	return (0);
 }
