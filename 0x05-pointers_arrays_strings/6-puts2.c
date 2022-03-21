@@ -1,21 +1,25 @@
 #include "main.h"
 
 /**
- * print_rev - check the code for Holberton School students.
- * @s: String to be reverse printed
+ * puts2 - check the code for Holberton School students.
+ * @str: String for alternate printing
  * Return: Always 0.
  */
-void print_rev(char *s)
+void puts2(char *str)
 {
-	int i;
+	int i, j;
 
 	i = 0;
-
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 		i++;
 
-	for (i -= 1; i >= 0; i--)
-		_putchar(s[i]);
+	i--;
+
+	for (j = 0; j <= i; j++)
+	{
+		if (j % 2 == 0)
+			_putchar(str[j]);
+	}
 
 	_putchar('\n');
 }
