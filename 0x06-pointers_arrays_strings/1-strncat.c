@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * _strncat - check the code for Holberton School students.
+ * _strncat - check the code for students.
  * @dest: Destination string
  * @src: String to be added
  * @n: Array block
@@ -13,11 +13,12 @@ char *_strncat(char *dest, char *src, int n)
 	int i, j;
 
 	for (i = 0; dest[i] != '\0'; i++)
-		;
-
-	for (j = 0; j < n; j++, i++)
 	{
-		dest[i] = src[j];
+
+		for (j = 0; j < n; j++, i++)
+		{
+			dest[i] = src[j];
+		}
 	}
 
 	return (dest);
