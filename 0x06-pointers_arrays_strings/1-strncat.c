@@ -1,25 +1,23 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- * _strncat - check the code for students.
- * @dest: Destination string
- * @src: String to be added
- * @n: Array block
- * Return: Always 0.
+ * _strncat - concatenates two strings
+ * @dest: pointer to the destination string
+ * @src: pointer to the source string
+ * @n: number of bytes to print
+ * Return: pointer to the resulting string dest
  */
+
 char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
 
-	for (i = 0; dest[i] != '\0'; i++)
+	i = 0;
+	for (j = 0; dest[j] != '\0'; j++)
+		;
+	while (src[i] != '\0' && i < n)
 	{
-
-		for (j = 0; j < n; j++, i++)
-		{
-			dest[i] = src[j];
-		}
+		dest[j + i] = src[i];
+		i++;
 	}
-
 	return (dest);
 }
