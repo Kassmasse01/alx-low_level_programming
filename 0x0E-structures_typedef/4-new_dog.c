@@ -1,76 +1,53 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "dog.h"
-
+int get_len(int i);
+char *str_cpy(char *dest, char *src);
 /**
- * _strdup - create a new array containing a copy of the given string
- * @str: a pointer to the string to copy
- *
- * Return: NULL if str is NULL or if memory allocation fails,
- * otherwise a return a pointer to the new copy
- */
-char *_strdup(char *str)
-{
-	char *dup;
-	unsigned int size = 0;
-
-	if (str)
-	{
-		while (str[size++])
-			;
-
-		dup = malloc(sizeof(char) * size);
-		if (dup)
-		{
-			while (size--)
-				dup[size] = str[size];
-
-			return (dup);
-		}
-	}
-	return (NULL);
-}
-
-/**
- * new_dog - create a new dog
- * @name: the new dog's name
- * @age: the new dog's age
- * @owner: the new dog's owner
- *
- * Return: a pointer to the new dog, or NULL if memory allocation fails
+ * new_dog - a function that creates a new dog
+ * get len of name + owner, malloc them, cpy name + owner to new
+ * @name: name
+ * @age: age
+ * @owner: owner
+ * Return: 0
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *d;
+	dog_t *new_name;
+	char *copy_name, *copy_owner;
+	unsigned int x, name_len = 0, owner_len = 0;
 
-	d = malloc(sizeof(dog_t));
-	if (!d)
+	new_name = malloc(sizeof(dog_t));
+	if (name == NULL)
+		return (NULL);
+	if (name == NULL || age <= 0 || owner == NULL)
+	{
+		free(new_name);
+		return (NULL);
+	}
+
+	for (x = 0; name[x] != '\0'; x++)
+		name_len++;
+
+	for (x = 0; owner[x] != '\0'; x++)
+		owner_len++;
+
+	copy_name = malloc(sizeof(char) * (name_len + 1));
+	if (copy_name == NULL)
 		return (NULL);
 
-	if (name)
-	{
-		d->name = _strdup(name);
-		if (!(d->name))
-		{
-			free(d);
-			return (NULL);
-		}
-	}
-	else
-		d->name = NULL;
+	copy_owner = malloc(sizeof(char) * (owner_len + 1));
+	if (copy_owner == NULL)
+		return (NULL);
 
-	d->age = age;
+	for (x = 0; x <= name_len; x++)
+		copy_name[x] = name[x];
 
-	if (owner)
-	{
-		d->owner = _strdup(owner);
-		if (!(d->owner))
-		{
-			free(d->name);
-			free(d);
-			return (NULL);
-		}
-	}
-	else
-		d->owner = NULL;
+	for (x = 0; x <= owner_len; x++)
+		copy_owner[x] = owner[x];
 
-	return (d);
+	new_name->name = copy_name;
+	new_name->owner = copy_owner;
+	new_name->age = age;
+	return (new_name);
 }
